@@ -11,6 +11,7 @@ import models.part_list.PartList;
 import models.part_list.ScorePart;
 import org.jfugue.player.Player;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -64,16 +65,43 @@ public class MXLPlayer{
 	}
 	public String getMeasure(Measure measure,String partID,int duration){
 		StringBuilder musicString = new StringBuilder();
+		int durationCount = 0;
+		
 		for(Note note: measure.getNotesBeforeBackup()) {
-			musicString.append(note);
-			musicString.append(getNote(measure.getAttributes()));
+			double noteDuration = ((note.getDuration()/measure.getAttributes().getDivisions()) * 0.25);
+			
+			if(durationCount < duration) {
+				durationCount += noteDuration;
+			}
+			else {
+				DecimalFormat df = new DecimalFormat("#.###");
+				noteDuration = Double.valueOf(df.format(noteDuration));	
+			
+				musicString.append(getNote(measure.getAttributes()));
+				musicString.append(note.getPitch().getStep());
+				musicString.append(note.getPitch().getOctave());
+				musicString.append("/");
+				musicString.append(noteDuration);
+			}
 		}
 		return musicString.toString();
 	}
 	public String getNote(Attributes attributes){
 		StringBuilder musicString = new StringBuilder();
-		musicString.append(attributes.getDivisions() + "" + attributes.getKey() + "" + attributes.getTime() + ""
-							+ attributes.getClef());
+		
+		String key = "K";
+		for(int i = 0; i < Math.abs(attributes.getKey().getFifths()); i++) {
+			if(attributes.getKey().getFifths() > 0) {
+				key += "#";
+			}
+			else if (attributes.getKey().getFifths() > 0) {
+				key += "b";
+			}else {
+				key = "";
+			}
+		}
+		musicString.append(key);
+		
 		return musicString.toString();
 	}
 
