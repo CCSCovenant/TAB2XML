@@ -94,7 +94,7 @@ public class MXLPlayer{
 			if(attributes.getKey().getFifths() > 0) {
 				key += "#";
 			}
-			else if (attributes.getKey().getFifths() > 0) {
+			else if (attributes.getKey().getFifths() < 0) {
 				key += "b";
 			}else {
 				key = "";
