@@ -74,14 +74,30 @@ public class MXLPlayer{
 				durationCount += noteDuration;
 			}
 			else {
-				DecimalFormat df = new DecimalFormat("#.###");
-				noteDuration = Double.valueOf(df.format(noteDuration));	
+				musicString.append(getNoteDetails(note));
+				String clef = measure.getAttributes().getClef().getSign();
 			
-				musicString.append(getNote(measure.getAttributes()));
-				musicString.append(note.getPitch().getStep());
-				musicString.append(note.getPitch().getOctave());
-				musicString.append("/");
-				musicString.append(noteDuration);
+				if(clef.equals("percussion")) {
+					musicString.append(note.getUnpitched().getDisplayStep());
+					musicString.append(note.getUnpitched().getDisplayOctave());
+				}
+				else if(clef.equals("TAB")){
+					
+			
+			//		musicString.append(getNote(measure.getAttributes()));
+					musicString.append(note.getPitch().getStep());
+					musicString.append(note.getPitch().getOctave());
+				}
+				
+				if(note.getGrace().getSlash().equals("yes")) {
+					musicString.append("i");
+				}
+				else {
+					DecimalFormat df = new DecimalFormat("#.###");
+					noteDuration = Double.valueOf(df.format(noteDuration));
+					musicString.append("/" + noteDuration);
+				}
+				
 			}
 		}
 		return musicString.toString();
@@ -101,6 +117,31 @@ public class MXLPlayer{
 			}
 		}
 		musicString.append(key);
+		
+		return musicString.toString();
+	}
+	
+//	public String getDuration(Note note) {
+//		String duration = note.getType();
+//		if(duration.equals("whole")) { return "w"; }
+//		else if(duration.equals("half")) { return "h"; }
+//		else if(duration.equals("quarter")) { return "q"; }
+//		else if(duration.equals("eighth")) { return "i"; }
+//		else if(duration.equals("16th")) { return "s"; }
+//		else if(duration.equals("32nd")) { return "t"; }
+//	}
+	
+	public String getNoteDetails(Note note) {
+		StringBuilder musicString = new StringBuilder();
+		String voice = "V" + note.getVoice();
+		String instrument; 
+		if(note.getInstrument() == null || note.getInstrument().getId().equals("")) {
+			instrument = "I0";
+		}
+		else { instrument = "I[" + note.getInstrument().getId() + "]";
+		}
+		
+		musicString.append(voice + instrument);
 		
 		return musicString.toString();
 	}
