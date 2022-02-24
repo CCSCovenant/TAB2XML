@@ -87,6 +87,10 @@ public class MXLPlayer{
 						musicString.append("R");
 					}
 					else {
+						if(note.getChord() == null && musicString.charAt(musicString.length()-1) == '+') {
+							musicString.deleteCharAt(musicString.length()-1);
+							musicString.append(" ");
+						}
 						//musicString.append(getNote(measure.getAttributes()));
 						musicString.append(note.getPitch().getStep());
 						musicString.append(note.getPitch().getOctave());
@@ -101,19 +105,11 @@ public class MXLPlayer{
 					noteDuration = Double.valueOf(df.format(noteDuration));
 					musicString.append("/" + noteDuration);
 				}
-				
+				musicString.append(" ");
 	
 				if(note.getChord() != null) { 
-					musicString.append("+");
-				}
-				else if(note.getChord() == null && musicString.charAt(musicString.length()-1) == '+') {
 					musicString.deleteCharAt(musicString.length()-1);
-				}
-				
-				for(Dot dot : note.getDots()) {
-					if(dot != null) {
-						musicString.append(".");
-					}
+					musicString.append("+");
 				}
 				
 			}
@@ -149,7 +145,7 @@ public class MXLPlayer{
 		else { instrument = "I[" + note.getInstrument().getId() + "]";
 		}
 		
-		musicString.append(voice + instrument);
+		musicString.append(voice + " " + instrument + " ");
 		
 		return musicString.toString();
 	}
