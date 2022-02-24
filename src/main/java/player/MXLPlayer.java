@@ -6,6 +6,7 @@ import models.Part;
 import models.ScorePartwise;
 import models.measure.Measure;
 import models.measure.attributes.Attributes;
+import models.measure.note.Dot;
 import models.measure.note.Note;
 import models.part_list.PartList;
 import models.part_list.ScorePart;
@@ -82,11 +83,14 @@ public class MXLPlayer{
 					musicString.append(note.getUnpitched().getDisplayOctave());
 				}
 				else if(clef.equals("TAB")){
-					
-			
-			//		musicString.append(getNote(measure.getAttributes()));
-					musicString.append(note.getPitch().getStep());
-					musicString.append(note.getPitch().getOctave());
+					if(note.getRest() != null) {
+						musicString.append("R");
+					}
+					else {
+						//musicString.append(getNote(measure.getAttributes()));
+						musicString.append(note.getPitch().getStep());
+						musicString.append(note.getPitch().getOctave());
+					}
 				}
 				
 				if(note.getGrace().getSlash().equals("yes")) {
@@ -96,6 +100,20 @@ public class MXLPlayer{
 					DecimalFormat df = new DecimalFormat("#.###");
 					noteDuration = Double.valueOf(df.format(noteDuration));
 					musicString.append("/" + noteDuration);
+				}
+				
+	
+				if(note.getChord() != null) { 
+					musicString.append("+");
+				}
+				else if(note.getChord() == null && musicString.charAt(musicString.length()-1) == '+') {
+					musicString.deleteCharAt(musicString.length()-1);
+				}
+				
+				for(Dot dot : note.getDots()) {
+					if(dot != null) {
+						musicString.append(".");
+					}
 				}
 				
 			}
@@ -120,16 +138,6 @@ public class MXLPlayer{
 		
 		return musicString.toString();
 	}
-	
-//	public String getDuration(Note note) {
-//		String duration = note.getType();
-//		if(duration.equals("whole")) { return "w"; }
-//		else if(duration.equals("half")) { return "h"; }
-//		else if(duration.equals("quarter")) { return "q"; }
-//		else if(duration.equals("eighth")) { return "i"; }
-//		else if(duration.equals("16th")) { return "s"; }
-//		else if(duration.equals("32nd")) { return "t"; }
-//	}
 	
 	public String getNoteDetails(Note note) {
 		StringBuilder musicString = new StringBuilder();
