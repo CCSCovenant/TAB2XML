@@ -75,6 +75,11 @@ public class MXLPlayer{
 				durationCount += noteDuration;
 			}
 			else {
+				if(note.getChord() == null && musicString.length() > 0 && musicString.charAt(musicString.length()-1) == '+') {
+					musicString.deleteCharAt(musicString.length()-1);
+					musicString.append(" ");
+				}
+				
 				musicString.append(getNoteDetails(note));
 				String clef = measure.getAttributes().getClef().getSign();
 			
@@ -87,10 +92,6 @@ public class MXLPlayer{
 						musicString.append("R");
 					}
 					else {
-						if(note.getChord() == null && musicString.charAt(musicString.length()-1) == '+') {
-							musicString.deleteCharAt(musicString.length()-1);
-							musicString.append(" ");
-						}
 						//musicString.append(getNote(measure.getAttributes()));
 						musicString.append(note.getPitch().getStep());
 						musicString.append(note.getPitch().getOctave());
