@@ -42,6 +42,7 @@ public class MXLPlayer{
 			}
 			partCount++;
 		}
+		System.out.println(musicString.toString());
 		player.play(musicString.toString());
 	}
 	public void initPartList(){
@@ -79,40 +80,40 @@ public class MXLPlayer{
 					musicString.deleteCharAt(musicString.length()-1);
 					musicString.append(" ");
 				}
-				
-				musicString.append(getNoteDetails(note));
-				String clef = measure.getAttributes().getClef().getSign();
-			
-				if(clef.equals("percussion")) {
-					musicString.append(note.getUnpitched().getDisplayStep());
-					musicString.append(note.getUnpitched().getDisplayOctave());
-				}
-				else if(clef.equals("TAB")){
-					if(note.getRest() != null) {
-						musicString.append("R");
+				if(measure.getAttributes().getClef() != null) {
+					musicString.append(getNoteDetails(note));
+					String clef = measure.getAttributes().getClef().getSign();
+
+					if(clef.equals("percussion")) {
+						musicString.append(note.getUnpitched().getDisplayStep());
+						musicString.append(note.getUnpitched().getDisplayOctave());
+					}
+					else if(clef.equals("TAB")){
+						if(note.getRest() != null) {
+							musicString.append("R");
+						}
+						else {
+							//musicString.append(getNote(measure.getAttributes()));
+							musicString.append(note.getPitch().getStep());
+							musicString.append(note.getPitch().getOctave());
+						}
+					}
+
+					if(note.getGrace() != null) {
+						musicString.append("i");
 					}
 					else {
-						//musicString.append(getNote(measure.getAttributes()));
-						musicString.append(note.getPitch().getStep());
-						musicString.append(note.getPitch().getOctave());
+						DecimalFormat df = new DecimalFormat("#.###");
+						noteDuration = Double.valueOf(df.format(noteDuration));
+						musicString.append("/" + noteDuration);
+					}
+					musicString.append(" ");
+
+					if(note.getChord() != null) { 
+						musicString.deleteCharAt(musicString.length()-1);
+						musicString.append("+");
 					}
 				}
-				
-				if(note.getGrace().getSlash().equals("yes")) {
-					musicString.append("i");
-				}
-				else {
-					DecimalFormat df = new DecimalFormat("#.###");
-					noteDuration = Double.valueOf(df.format(noteDuration));
-					musicString.append("/" + noteDuration);
-				}
-				musicString.append(" ");
-	
-				if(note.getChord() != null) { 
-					musicString.deleteCharAt(musicString.length()-1);
-					musicString.append("+");
-				}
-				
 			}
 		}
 		return musicString.toString();
