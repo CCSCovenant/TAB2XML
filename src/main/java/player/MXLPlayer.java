@@ -113,7 +113,7 @@ public class MXLPlayer{
 					}
 					musicString.append(" ");
 
-					if(note.getChord() != null) { 
+					if(note.getChord() != null && note != measure.getNotesBeforeBackup().get(measure.getNotesBeforeBackup().size()-1)) { 
 						musicString.deleteCharAt(musicString.length()-1);
 						musicString.append("+");
 					}
