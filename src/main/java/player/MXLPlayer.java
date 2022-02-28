@@ -81,7 +81,11 @@ public class MXLPlayer{
 					musicString.append(" ");
 				}
 				if(measure.getAttributes().getClef() != null) {
-					musicString.append(getNoteDetails(note));
+					if(note.getChord() != null && musicString.length() > 0 && musicString.charAt(musicString.length()-1) == '+') {
+						
+					}else {
+						musicString.append(getNoteDetails(note));
+					}
 					String clef = measure.getAttributes().getClef().getSign();
 
 					if(clef.equals("percussion")) {
@@ -151,5 +155,4 @@ public class MXLPlayer{
 		
 		return musicString.toString();
 	}
-
 }
