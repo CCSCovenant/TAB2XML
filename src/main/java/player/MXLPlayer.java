@@ -9,6 +9,7 @@ import models.measure.attributes.Attributes;
 import models.measure.attributes.Clef;
 import models.measure.note.Dot;
 import models.measure.note.Note;
+import models.measure.note.notations.Tied;
 import models.part_list.PartList;
 import models.part_list.ScorePart;
 import org.jfugue.player.Player;
@@ -192,5 +193,38 @@ public class MXLPlayer{
 		/*More could be added later on*/
 		else { return "GUNSHOT"; }//default for now
 	}
+	
+//	public void addTies(StringBuilder input, Note note) {
+//		int indextoCheck = input.length() - 1;
+//		if(note.getNotations() != null && note.getNotations().getTieds() != null) {
+//			for(int i = 1; i <= 10; i++) {
+//				if(input.charAt(input.length()-i) != '.' || input.charAt(input.length()-i) == getNoteDuration(note)) {
+//					input.deleteCharAt(input.length()-i);
+//					break;
+//				}
+//			}
+//			
+//			for(Tied tie : note.getNotations().getTieds()) {
+//				if(tie != null && (tie.getType().equals("stop") || tie.getType().equals("continue"))) {
+//					input.append("-");
+//				}
+//			}
+//			input.append(getNoteDuration(note));
+//		}
+//		else if(note.getNotations() != null && note.getNotations().getTieds() != null) {
+//			for(int i = 1; i <= 10; i++) {
+//				if(input.charAt(input.length()-i) != '.' || input.charAt(input.length()-i) == getNoteDuration(note)) {
+//					input.deleteCharAt(input.length()-i);
+//					break;
+//				}
+//			}
+//			for(Tied tie : note.getNotations().getTieds()) {
+//				if(tie != null && (tie.getType().equals("start") || tie.getType().equals("continue"))) {
+//					input.append("-");
+//				}
+//			}
+//			input.append(getNoteDuration(note));
+//		}
+//	}
 
 }
