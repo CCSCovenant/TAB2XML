@@ -29,9 +29,8 @@ Maaz Siddiqui - 216402927
        - Customer/Client: The customer or client will be expressing what features they would like the software 
          to have, and through this document ensure that the software will cover the aspects they would like. 
        - Project Manager: The project manager will be a point of contact for any conveyance between the developers 
-         and the customer/client and communicate any new demands or changes in the customer/client’s requirements. 
-		 The project manager will also be setting deadlines for the developers to follow and assist in maximizing 
-	 	developer efficiency. 
+         and the customer/client and communicate any new demands or changes in the customer/client’s requirements. The 
+	 project manager will also be setting deadlines for the developers to follow and assist in maximizing developer efficiency. 
        - Developers: The developers will be working on implementing the requirements of this software as 
          laid out by the customer/client through their development of the software.
  
