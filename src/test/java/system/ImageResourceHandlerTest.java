@@ -35,6 +35,11 @@ class ImageResourceHandlerTest {
 	}
 	@Test
 	void ResourceNullTest(){
-		Assertions.assertNull(imageResourceHandler.getImage("not possible id"));
+		Assertions.assertNull(imageResourceHandler.getImage("invalid id"));
+	}
+	@Test
+	void ResourceNullTest2(){
+		HashMap<String,String> internal_map = imageResourceHandler.ImageResources;
+		Assertions.assertNull(internal_map.size()<0);
 	}
 }
