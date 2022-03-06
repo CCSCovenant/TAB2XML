@@ -51,7 +51,7 @@ Maaz Siddiqui - 216402927
        This software will allow users to convert their text-based tablatures into music sheets. Additionally, 
        it will allow users to play those music tablatures after the conversion.
 ##  2.3 User Class Characteristics 
-	####	2.3.1 Use Case #1
+	    ####2.3.1 Use Case #1
 		      Title: Preview Music Sheet
 		      Primary Actor: Who desires it? User/user/Client
                       Preconditions: The user has started the application.
