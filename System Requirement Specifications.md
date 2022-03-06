@@ -3,12 +3,17 @@
 
 PREPARED FOR
 Vassilios Tzerpos
+
 Lassonde School of Engineering
+
 
 PREPARED BY
 Hiba Jaleel - 215735020
+
 Kuimou Yi - 216704819
+
 Kamsi Idimogu - 216880288
+
 Maaz Siddiqui - 216402927
 
 
