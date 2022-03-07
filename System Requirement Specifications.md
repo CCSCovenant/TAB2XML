@@ -33,6 +33,8 @@ Maaz Siddiqui - 216402927
 	 project manager will also be setting deadlines for the developers to follow and assist in maximizing developer efficiency. 
        - Developers: The developers will be working on implementing the requirements of this software as 
          laid out by the customer/client through their development of the software.
+       - Musicians: Musicians are defined as people who enjoy playing instruments.
+       	 
  
 ##  1.3 Intended Use
        The software development timeline of the project is from January 10, 2022 to April 11, 2022. The main costs 
@@ -44,31 +46,31 @@ Maaz Siddiqui - 216402927
 
 #   2.  Overall Description
 ##  2.1 Product Perspective 
-       This software package (application) will be accessed when run through Eclipse. The application will connect
-       to the user interface of MusicXML Converter.  
+       This software package (application) will be can be downloaded, 
 ##  2.2 Product Overview 
        This software will allow users to convert their text-based tablatures into music sheets. Additionally, 
        it will allow users to play those music tablatures after the conversion.
 ##  2.3 User Class Characteristics 
 	        2.3.1 Use Case #1
 		      Title: Preview Music Sheet
-		      Primary Actor: Who desires it? User/user/Client
+		      Primary Actor: Who desires it? Musician.
                       Preconditions: The user has started the application.
                       Success Scenario: The user inputs the text-based tablature. The user previews the music sheet.
 
                 2.3.2 Use Case #2
                       Title: Saving Music Sheet
-                      Primary Actor: Who desires it? User/user/Client
+                      Primary Actor: Who desires it? Musician
                       Preconditions: The user has started the application.
                       Success Scenario: The user inputs the text-based tablature. The user previews the music sheet. 
 		                        The user saves the music sheet. 
 
                 2.3.3 Use Case #3
                       Title: Play Music
-                      Primary Actor: Who desires it? User/user/Client
+                      Primary Actor: Who desires it? Musician
                       Preconditions: The user has started the application.
                       Success Scenario: The user inputs the text-based tablature. The user previews the music sheet. 
 		                        The user plays music. 
+##  2.4 User Story
 #   3. System Features and Requirements
 ##  3.1 Functional Requirements
 	 	3.1.1 Tablature to MusicXML conversion 
