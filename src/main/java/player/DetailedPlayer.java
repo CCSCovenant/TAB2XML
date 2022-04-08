@@ -141,7 +141,7 @@ public class DetailedPlayer {
 	}
 	public void seek(double sliderPOS) {
 		if(player.isPlaying() || player.isPaused()) {
-			double ratio  = (slidermax - slidermin) * sliderPOS;
+			double ratio  = sliderPOS / (slidermax - slidermin);
 			long total = player.getTickLength();
 			long time =(long) ((double)player.getTickLength() * ratio);
 			player.seek(time);
