@@ -11,8 +11,8 @@ public class VElement implements VConfigAble {
 	public Group group = new Group();
 	double W = 0;
 	double H = 0;
-	HashMap<String,Double> configMap = new HashMap<>();
-	HashMap<String, Pair<Double,Double>> limitMap = new HashMap<>();
+	public HashMap<String,Double> configMap = new HashMap<>();
+	public HashMap<String, Pair<Double,Double>> limitMap = new HashMap<>();
 	public VElement(){
 		group.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 			@Override

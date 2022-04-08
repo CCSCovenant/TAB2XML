@@ -10,7 +10,6 @@ import visualElements.VElement;
 import visualElements.VUtility;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class VGNotation extends VElement {
@@ -20,7 +19,6 @@ public class VGNotation extends VElement {
 	List<Line> Vlines = new ArrayList<>();
 	List<Line> Hlines = new ArrayList<>();
 	List<Circle> circles = new ArrayList<>();
-	HashMap<String,Double> configMap = new HashMap<>();
 	public VGNotation(){
 		initConfig();
 	}
@@ -80,15 +78,7 @@ public class VGNotation extends VElement {
 	}
 
 
-	@Override
-	public HashMap<String, Double> getConfigAbleList() {
-		return configMap;
-	}
 
-	@Override
-	public void updateConfig(String id, double value) {
-		configMap.put(id,value);
-	}
 	public void initElements(){
 		int globalHLineNum = 0;
 		for (int i =0;i<notes.size();i++){

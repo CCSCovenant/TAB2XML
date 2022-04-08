@@ -7,12 +7,9 @@ import javafx.scene.shape.QuadCurveTo;
 import visualElements.VConfig;
 import visualElements.VElement;
 
-import java.util.HashMap;
-
 public class VCurvedNotation extends VElement {
 	boolean positive = false;
 	String type;
-	public HashMap<String,Double> configMap = new HashMap<>();
 	int startID = -2; // measure start
 	int endID = -1; // measure end
 	MoveTo moveTo = new MoveTo();
@@ -76,16 +73,6 @@ public class VCurvedNotation extends VElement {
 
 	public String getType() {
 		return type;
-	}
-
-	@Override
-	public HashMap<String, Double> getConfigAbleList() {
-		return configMap;
-	}
-
-	@Override
-	public void updateConfig(String id, double value) {
-		configMap.put(id,value);
 	}
 
 	public int getStartID() {
