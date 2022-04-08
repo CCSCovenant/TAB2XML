@@ -5,6 +5,8 @@ import custom_exceptions.TXMLException;
 import models.Part;
 import models.ScorePartwise;
 import models.measure.Measure;
+import models.measure.attributes.Attributes;
+import models.measure.attributes.Clef;
 import models.measure.barline.BarLine;
 import models.measure.note.Dot;
 import models.measure.note.Note;
@@ -166,6 +168,20 @@ public class MXLPlayer{
 
 		}
 		return musicString.toString();
+	}
+	
+	public static String composeMusicSting(List<Note> notes) {
+		Measure measure = new Measure();
+		Attributes a = new Attributes();
+		Clef clef;
+		if(notes.get(0).getRest() == null && notes.get(0).getUnpitched() != null) {clef = new Clef("percussion",0); }
+		else {clef = new Clef("TAB",0); }
+		a.setClef(clef); measure.setAttributes(a);
+		measure.setNotesBeforeBackup(notes);
+		MXLPlayer compose = new MXLPlayer();
+		String musicString = compose.getMeasure(measure, "-1", -1);
+		
+		return musicString;
 	}
 	
 	public String getNoteDetails(Note note) {
